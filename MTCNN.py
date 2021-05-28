@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 # face detection with mtcnn on a photograph
 import os
 import cv2
@@ -69,17 +63,15 @@ def detect(filename):
     # display faces on the original image
     draw_image_with_boxes(filename, faces)
 
+def main():
+    folder = '.\data'
+    folderlen = len(folder) + 1
+    # define filenames
+    filenames = load_images_from_folder(folder)
 
-# In[2]:
+    # detect faces in the image with MTCNN
+    for i in range(len(filenames)):
+        detect(filenames[i])
 
-
-## Main
-folder = '.\data'
-folderlen = len(folder) + 1
-# define filenames
-filenames = load_images_from_folder(folder)
-
-# detect faces in the image with MTCNN
-for i in range(len(filenames)):
-    detect(filenames[i])
-
+if __name__ == '__main__':
+    main()
